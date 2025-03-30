@@ -338,6 +338,8 @@ function renderPlaylists(playlists) {
     return;
   }
 
+  filteredPlaylists.sort((a, b) => a.name.localeCompare(b.name));
+
   filteredPlaylists.forEach((playlist) => {
     const card = document.createElement("div");
     card.className = "card";
