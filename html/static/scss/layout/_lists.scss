@@ -1,0 +1,330 @@
+@use "../core/variables" as *;
+
+.list {
+  list-style: decimal outside;
+  padding-left: 2rem;
+  margin: $spacing-unit auto;
+  max-width: 600px;
+
+  li {
+    align-items: center;
+    gap: $spacing-unit;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid $gray;
+    cursor: pointer;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
+  }
+}
+
+.track-list,
+.artist-list {
+  display: block;
+  padding: $spacing-unit;
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+  list-style: none;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  @media (max-width: $breakpoint-mobile) {
+    max-width: calc(100% - 20px) !important;
+    padding: $spacing-unit 0;
+  }
+}
+
+.track-list {
+  counter-reset: trackCounter;
+  text-align: left !important;
+}
+
+.artist-list {
+  counter-reset: artistCounter;
+}
+
+.TrackItem {
+  width: 100%;
+  border-bottom: 1px solid $gray;
+  position: relative;
+  padding: 1.5rem 0 1.5rem 25px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  counter-increment: trackCounter;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  &::before {
+    content: counter(trackCounter) ". ";
+    position: absolute;
+    left: 0;
+    text-align: right;
+    font-weight: bold;
+    color: $primary;
+  }
+
+  &__TrackContainer {
+    display: flex;
+    text-decoration: none;
+    color: $light;
+    width: 100%;
+    align-items: center;
+  }
+
+  &__TrackMeta {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding-right: 5px;
+  }
+
+  &__TrackInfo {
+    flex-grow: 1;
+    max-width: 75%;
+    overflow: hidden;
+    text-align: left;
+  }
+
+  &__TrackName {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    line-height: 1.2;
+    font-size: 0.9rem;
+    text-align: left !important;
+    max-width: 100%;
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 280px !important;
+      display: inline-block !important;
+      max-width: 240px !important;
+      font-size: 0.85rem !important;
+    }
+  }
+
+  &__TrackAlbum {
+    font-size: 0.8rem;
+    color: $gray;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left !important;
+
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 240px !important;
+    }
+  }
+
+  &__TrackDuration {
+    font-size: 0.8rem;
+    color: $gray;
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  &__TrackArtwork {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-right: $spacing-unit;
+    overflow: hidden;
+    border-radius: 4px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+  }
+
+  &__TrackRight {
+    margin-left: auto;
+
+    @media (max-width: $breakpoint-mobile) {
+      align-self: center !important;
+      margin-top: 0 !important;
+      padding-right: 5px;
+      flex-shrink: 0 !important;
+      white-space: nowrap !important;
+    }
+  }
+
+  &__Mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+
+  &:hover .TrackItem__Mask {
+    opacity: 1;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 1.5rem 0 1.5rem 50px !important;
+  }
+}
+
+.ArtistItem {
+  width: 100%;
+  border-bottom: 1px solid $gray;
+  position: relative;
+  padding: 1.5rem 0 1.5rem 25px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  counter-increment: artistCounter;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  &::before {
+    content: counter(artistCounter) ". ";
+    position: absolute;
+    left: 0;
+    text-align: right;
+    font-weight: bold;
+    color: $primary;
+  }
+
+  &__Container {
+    display: flex;
+    text-decoration: none;
+    color: $light;
+    width: 100%;
+    align-items: center;
+  }
+
+  &__Artwork {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-right: $spacing-unit;
+    overflow: hidden;
+    border-radius: 50%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  &__Mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  &:hover .ArtistItem__Mask {
+    opacity: 1;
+  }
+
+  &__Meta {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding-right: 5px;
+
+    &__AlbumPlaceholder {
+      font-size: 0.8rem;
+      color: transparent;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left !important;
+      display: block;
+      height: 1.2em;
+    }
+  }
+
+  &__Left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    max-width: 100%;
+    width: 100%;
+    text-align: left;
+
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 60% !important;
+      flex-shrink: 1 !important;
+    }
+  }
+
+  &__Name {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    line-height: 1.2;
+    font-size: 0.9rem;
+    text-align: left !important;
+
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 120px !important;
+      font-size: 0.85rem !important;
+    }
+  }
+
+  &__Followers {
+    font-size: 0.8rem;
+    color: $gray;
+    margin-left: 0.5rem;
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  &__Right {
+    margin-left: auto;
+
+    @media (max-width: $breakpoint-mobile) {
+      align-self: center !important;
+      margin-top: 0 !important;
+      padding-right: 5px;
+      flex-shrink: 0 !important;
+      white-space: nowrap !important;
+    }
+  }
+}

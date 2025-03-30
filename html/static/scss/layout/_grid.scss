@@ -1,0 +1,63 @@
+@use "../core/variables" as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#playlistsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.parallel-container {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 2rem;
+  align-items: stretch !important;
+  grid-auto-rows: 1fr !important;
+  margin: 0 auto !important;
+  max-width: 1200px !important;
+
+  > .section {
+    min-width: 300px;
+    max-width: 600px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: block !important;
+    flex-direction: column;
+    margin-bottom: 0 !important;
+    align-self: stretch;
+    flex: unset !important;
+
+    #tracksGrid,
+    #artistsGrid {
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+
+      #tracksGrid,
+      #artistsGrid {
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use "../core/variables" as *;
+
+.section {
+  margin-bottom: $section-margin;
+
+  &-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem !important;
+    border-bottom: 2px solid $primary;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+  }
+}
+
+.copyright-footer {
+  margin-top: auto;
+  padding: $spacing-unit 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: $gray;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}

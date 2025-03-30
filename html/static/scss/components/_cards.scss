@@ -1,0 +1,77 @@
+@use "../core/variables" as *;
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  &-body {
+    padding: $spacing-unit;
+  }
+
+  &-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+    color: $light;
+  }
+
+  &-text {
+    color: $gray;
+    font-size: 0.875rem;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+#playlistsGrid .card {
+  width: 200px;
+  height: auto;
+  display: inline-block;
+  margin: 0.75rem;
+
+  .card-img {
+    width: 200px;
+    height: 200px;
+    display: block;
+  }
+
+  .card-body {
+    width: 200px;
+    text-align: center;
+  }
+
+  .card-title {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .card-text {
+    text-align: center;
+  }
+}

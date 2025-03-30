@@ -1,0 +1,28 @@
+@use "../core/variables" as *;
+
+.btn {
+  background-color: $primary;
+  color: $dark;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($primary, 0.3);
+  }
+
+  &:disabled {
+    background-color: $gray;
+    cursor: not-allowed;
+  }
+}
+
+#loginBtn {
+  display: block;
+  margin: 0 auto;
+}
