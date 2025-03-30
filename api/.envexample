@@ -1,0 +1,3 @@
+SPOTIFY_CLIENT_ID=yourclientid
+SPOTIFY_CLIENT_SECRET=yourclientsecret
+REDIRECT_URI=yourredirect
